@@ -75,3 +75,11 @@ process_files_to_edit() {
 
 process_files_to_edit "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template"
 
+file_path="$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/config/maker.env"
+
+> "$file_path"
+data1="EXPORT TEMPLATE_PATH='$TEMPLATE_PATH'"
+data2="EXPORT GO_MOD_URL='$go_module'"
+# Write the new data to the file
+echo "$data1" > "$file_path"
+echo "$data2" >> "$file_path"
