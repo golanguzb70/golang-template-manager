@@ -2,7 +2,7 @@
 
 echo "Hello, good luck with your new project."
 echo "Choose a template to start."
-echo '1. Golang, postgres, gin, swagger.'
+echo '1. Golang, postgres, gin, swagger, basic auth'
 
 
 read template;
