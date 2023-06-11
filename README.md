@@ -18,5 +18,5 @@ alias newtemplate="~/golang-template-manager/main.sh"
 3. To submit the configuration, run the following command
 ```
 # put your choice instead of .zshrc
-souce .zshrc
+source .zshrc
 ```
