@@ -13,7 +13,7 @@ sudo chmod 770 ./golang-template-manager/*
 Add the following lines of script to your .bashrc, .zshrc or .profile depending on your OS and your choice.
 ```
 export TEMPLATE_PATH="/home/username/golang-template-manager"
-alias newtemplate="/home/username/golang-template-manager/main.sh"
+alias newtemplate="${TEMPLATE_PATH}/main.sh"
 ```
 3. To submit the configuration, run the following command
 ```
