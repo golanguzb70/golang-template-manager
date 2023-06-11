@@ -58,6 +58,13 @@ process_files "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-tem
 
 title_crud=$(echo "$crudname" | sed -E 's/\b(\w)(\w*)/\u\1\2/g')
 
+update_word() {
+    local file_path=$1
+
+    sed -i "s/template/$crudname/g" "$file_path"
+    sed -i "s/Template/$title_crud/g" "$file_path"
+}
+
 # Recursively process files within the folder
 process_files_to_edit() {
     local folder=$1
@@ -65,12 +72,14 @@ process_files_to_edit() {
 
     for file in "${files[@]}"; do
         if [ -d "$file" ]; then
-            if [[ "$file" != "./scripts" ]]; then
+            if [[ "$file" != "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/scripts" ]]; then
+                echo $file
                 process_files_to_edit "$file"  # Recursively process subfolders
             fi
         else
-            find  ./* -type f -exec sed -i "s|template|$crudname|g" {} +
-            find  ./* -type f -exec sed -i "s|Template|$title_crud|g" {} +
+            # find  ./* -type f -exec sed -i "s|template|$crudname|g" {} +
+            # find  ./* -type f -exec sed -i "s|Template|$title_crud|g" {} +
+            update_word "$file"  
         fi
     done
 }
