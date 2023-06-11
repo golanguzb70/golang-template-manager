@@ -20,3 +20,9 @@ alias newtemplate="~/golang-template-manager/main.sh"
 # put your choice instead of .zshrc
 source .zshrc
 ```
+
+# Create new project
+To create a new project run the command below and follow all the instructions that are given after that command.
+```
+newtemplate
+```
