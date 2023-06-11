@@ -12,8 +12,8 @@ sudo chmod 770 ./golang-template-manager/*
 2. Set alias to run bash commands easily.
 Add the following lines of script to your .bashrc, .zshrc or .profile depending on your OS and your choice.
 ```
-export TEMPLATE_PATH="~/golang-template-manager"
-alias newtemplate="~/golang-template-manager/main.sh"
+export TEMPLATE_PATH="/home/username/golang-template-manager"
+alias newtemplate="/home/username/golang-template-manager/main.sh"
 ```
 3. To submit the configuration, run the following command
 ```
