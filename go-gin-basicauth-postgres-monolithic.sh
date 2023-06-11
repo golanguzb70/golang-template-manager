@@ -65,7 +65,7 @@ process_files_to_edit() {
 
     for file in "${files[@]}"; do
         if [ -d "$file" ]; then
-            if [[ "$file" != "./templates" ]]; then
+            if [[ "$file" != "./scripts" ]]; then
                 process_files_to_edit "$file"  # Recursively process subfolders
             fi
         else
