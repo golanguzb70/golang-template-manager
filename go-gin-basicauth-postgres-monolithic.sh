@@ -65,7 +65,9 @@ process_files_to_edit() {
 
     for file in "${files[@]}"; do
         if [ -d "$file" ]; then
-            process_files_to_edit "$file"  # Recursively process subfolders
+            if [[ "$file" != "./templates" ]]; then
+                process_files_to_edit "$file"  # Recursively process subfolders
+            fi
         else
             find  ./* -type f -exec sed -i "s|template|$crudname|g" {} +
             find  ./* -type f -exec sed -i "s|Template|$title_crud|g" {} +
@@ -78,8 +80,8 @@ process_files_to_edit "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monoli
 file_path="$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/config/maker.env"
 
 > "$file_path"
-data1="EXPORT TEMPLATE_PATH='$TEMPLATE_PATH'"
-data2="EXPORT GO_MOD_URL='$go_module'"
+data1="export TEMPLATE_PATH='$TEMPLATE_PATH'"
+data2="export GO_MOD_URL='$go_module'"
 # Write the new data to the file
 echo "$data1" > "$file_path"
 echo "$data2" >> "$file_path"
@@ -87,3 +89,6 @@ echo "$data2" >> "$file_path"
 # Copy the code to your current directory.
 cp -r $TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/* $current_path
 rm -rf $TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template
+cd $current_path
+go mod tidy
+make swag_init
