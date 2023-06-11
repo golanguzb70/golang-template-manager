@@ -73,11 +73,12 @@ process_files_to_edit() {
     for file in "${files[@]}"; do
         if [ -d "$file" ]; then
             if [[ "$file" != "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/scripts" ]]; then
-                echo $file
                 process_files_to_edit "$file"  # Recursively process subfolders
             fi
         else
-            update_word "$file"  
+            if [[ "$file" != *"README.md"* ]]; then
+                update_word "$file"  
+            fi
         fi
     done
 }
