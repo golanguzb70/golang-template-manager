@@ -132,7 +132,7 @@ echo "New lines of text have been added to the beginning of the file."
 
 
 # Copy the code to your current directory.
-cp -r $TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/* $current_path
+cp -ra $TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/* $current_path
 rm -rf $TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template
 cd $current_path
 go mod tidy
