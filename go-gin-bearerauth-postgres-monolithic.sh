@@ -131,7 +131,7 @@ echo "New lines of text have been added to the beginning of the file."
 
 # Copy the code to your current directory.
 cp -rT  "$TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template/" "$current_path"
-# rm -rf $TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template
+rm -rf $TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template
 cd $current_path
 go mod tidy
 make swag_init
