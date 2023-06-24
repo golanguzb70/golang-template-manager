@@ -72,7 +72,7 @@ process_files_to_edit() {
 
     for file in "${files[@]}"; do
         if [ -d "$file" ]; then
-            if [[ "$file" != "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/scripts" ] || ["$file" != "$TEMPLATE_PATH/templates/go-gin-basicauth-postgres-monolithic-template/api/helper/email"]]; then
+            if [[ "$file" != *"$TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template/scripts"*  && "$file" != *"$TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template/api/helper"* ]]; then
                 process_files_to_edit "$file"  # Recursively process subfolders
             fi
         else
