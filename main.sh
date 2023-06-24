@@ -8,11 +8,15 @@ fi
 
 echo "Hello, good luck with your new project."
 echo "Choose a template to start."
-echo '1. Golang, postgres, gin, swagger, basic auth'
+templates="go-gin-basicauth-postgres-monolithic go-gin-bearerauth-postgres-monolithic"
 
-
-read template;
-
-if [ $template -eq 1 ]; then
-    $TEMPLATE_PATH/'go-gin-basicauth-postgres-monolithic.sh'
-fi
+select template in $templates
+do
+    if [ "$template" == "go-gin-basicauth-postgres-monolithic" ]; then
+        bash $TEMPLATE_PATH/'go-gin-basicauth-postgres-monolithic.sh'
+        break
+    elif [ "$template" == "go-gin-bearerauth-postgres-monolithic" ]; then
+        bash $TEMPLATE_PATH/'go-gin-bearerauth-postgres-monolithic.sh'
+        break
+    fi
+done
