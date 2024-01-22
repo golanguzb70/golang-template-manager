@@ -188,4 +188,20 @@ else
     echo "Word '$target_word' not found in '$file_path_postgres_repo'. No lines added."
 fi
 
+# Add permissions to ./config/auth.csv
+lines_to_add_auth_permissions=(
+"p, user, /v1/${crudname}, POST"
+"p, user, /v1/${crudname}/{id}, GET"
+"p, user, /v1/${crudname}/list, GET"
+"p, user, /v1/${crudname}, PUT"
+"p, user, /v1/${crudname}/{id}, DELETE"
+)
+
+target_file="config/auth.csv"
+
+for line in "${lines_to_add_auth_permissions[@]}"; do
+    echo "$line" >> "$target_file"
+done
+
+
 rm -rf $TEMPLATE_PATH/templates/go-gin-bearer-auth-postgres-monolithic-template
